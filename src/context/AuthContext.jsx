@@ -1,8 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { createContext, useContext, useEffect, useState } from "react";
 import { login as apiLogin, refresh as apiRefresh, getMe } from "../lib/api";
-
-const AuthCtx = createContext(null);
-export const useAuth = () => useContext(AuthCtx);
+import { AuthCtx } from "./AuthCtx";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);

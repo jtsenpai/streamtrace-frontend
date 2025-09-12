@@ -30,4 +30,32 @@ export async function getMe() {
     return data;
 }
 
+// ---- PROVIDERS CRUD ----
+// List providers with optional search/order/pagination
+export async function listProviders({ search = "", ordering = "name", page = 1 }) {
+    const params = {};
+    if (search) params.search = search
+    if (ordering) params.ordering = ordering
+    if (page) params.page = page
+
+    const { data } = await api.get("/providers/", { params });
+    return data;
+}
+
+export async function createProvider(payload) {
+    const { data } = await api.post("/providers/", payload);
+    return data;
+}
+
+export async function updateProvider(id, payload) {
+    const { data } = await api.patch(`/providers/${id}`, payload);
+    return data;
+}
+
+export async function deleteProvider(id) {
+    await api.delete(`/providers/${id}`);
+    return true;
+
+}
+
 export default api;

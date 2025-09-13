@@ -58,4 +58,31 @@ export async function deleteProvider(id) {
 
 }
 
+// ----------------------- SUBSCRIPTIONS CRUD -----------------------
+export async function listSubscriptions({ provider = "", due_in_days = "", ordering = "next_renewal_date", page = 1 } = {}) {
+    const params = {};
+    if (provider) params.provider = provider;
+    if (due_in_days) params.due_in_days = due_in_days;
+    if (ordering) params.ordering = ordering
+    if (page) params.page = page;
+
+    const { data } = await api.get("/subscriptions/", { params });
+    return data;
+}
+
+export async function createSubscription(payload) {
+    const { data } = await api.post("/subscriptions/", payload);
+    return data;
+}
+
+export async function updateSubscription(id, payload) {
+    const { data } = await api.patch(`/subscriptions/${id}`, payload);
+    return data;
+}
+
+export async function deleteSubscription(id) {
+    await api.delete(`/subscriptions/${id}`)
+    return true;
+}
+
 export default api;

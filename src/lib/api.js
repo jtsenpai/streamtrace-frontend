@@ -85,4 +85,9 @@ export async function deleteSubscription(id) {
     return true;
 }
 
+export async function getDashboardSummary(days = 14) {
+    const { data } = await api.get("/dashboard/summary", { params: { days } });
+    return data;
+}
+
 export default api;

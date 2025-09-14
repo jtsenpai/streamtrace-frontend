@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProvidersPage from "./pages/Providers";
+import SubscriptionsPage from "./pages/SubscriptionsPage";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
                 <ProvidersPage />
               </ProtectedRoute>
             }
+          />
+          <Route
+            path="/subscriptions"
+            element={<ProtectedRoute>SubscriptionsPage</ProtectedRoute>}
           />
         </Routes>
       </AuthProvider>
